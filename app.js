@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const bodyParser = require('body-parser');
-
+require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -25,7 +25,7 @@ app.post('/complete_chat', async (req, res) => {
             {
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer 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'
+                    'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
                 }
             }
         );
@@ -42,4 +42,3 @@ app.post('/complete_chat', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
-
